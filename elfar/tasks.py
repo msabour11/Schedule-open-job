@@ -1,7 +1,8 @@
 import frappe
 from frappe.utils import now
 
-# create new unique route 
+
+# create new unique route
 def generate_unique_route(base_route):
     exists = frappe.db.exists("Job Opening", {"route": base_route})
     counter = 1
@@ -19,7 +20,7 @@ def create_job_openning():
 
     emps = frappe.db.get_list(
         "Employee",
-        {"status": ["!=", "active"], "custom_has_open_job": ["!=", True]},
+        {"status": ["!=", "Active"], "custom_has_open_job": ["!=", True]},
         ignore_permissions=True,
     )
     for emp in emps:
@@ -50,5 +51,3 @@ def create_job_openning():
         i.custom_has_open_job = True
         i.save()
     frappe.db.commit()
-
-

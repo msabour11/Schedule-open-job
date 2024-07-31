@@ -134,7 +134,9 @@ app_license = "mit"
 # ---------------
 
 scheduler_events = {
-    # "cron": {"*/1 * * * *": ["elfar.tasks.create_job_openning"]},
+    # to run every 1 minute
+    "cron": {"*/1 * * * *": ["elfar.tasks.create_job_openning"]},
+    # to run every 4 minute
     # "all": [
     # 	"elfar.tasks.create_job_openning"
     # ],
