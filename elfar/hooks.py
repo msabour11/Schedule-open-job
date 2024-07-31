@@ -133,23 +133,24 @@ app_license = "mit"
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"elfar.tasks.all"
-# 	],
-# 	"daily": [
-# 		"elfar.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"elfar.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"elfar.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"elfar.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+    # "cron": {"*/1 * * * *": ["elfar.tasks.create_job_openning"]},
+    # "all": [
+    # 	"elfar.tasks.create_job_openning"
+    # ],
+    # "daily": [
+    # 	"elfar.tasks.daily"
+    # ],
+    # "hourly": [
+    # 	"elfar.tasks.create_job_openning"
+    # ],
+    # "weekly": [
+    # 	"elfar.tasks.weekly"
+    # ],
+    # "monthly": [
+    # 	"elfar.tasks.monthly"
+    # ],
+}
 
 # Testing
 # -------
@@ -226,4 +227,3 @@ app_license = "mit"
 # default_log_clearing_doctypes = {
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
-
