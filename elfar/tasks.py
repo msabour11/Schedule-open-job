@@ -1,5 +1,5 @@
 import frappe
-from frappe.utils import now
+from frappe.utils import now, today
 
 
 # create new unique route
@@ -17,10 +17,14 @@ def generate_unique_route(base_route):
 @frappe.whitelist(allow_guest=True)
 def create_job_openning():
     employees = []
+    tody = today()
 
     emps = frappe.db.get_list(
         "Employee",
-        {"status": ["!=", "Active"], "custom_has_open_job": ["!=", True]},
+        {
+            "custom_has_open_job": ["!=", True],
+            "resignation_letter_date": ["=", tody],
+        },
         ignore_permissions=True,
     )
     for emp in emps:
@@ -51,3 +55,4 @@ def create_job_openning():
         i.custom_has_open_job = True
         i.save()
     frappe.db.commit()
+
