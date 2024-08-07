@@ -56,3 +56,28 @@ def create_job_openning():
         i.save()
     frappe.db.commit()
 
+
+@frappe.whitelist(allow_guest=True)
+def mark_employee_inactive():
+    employees = []
+    tody = today()
+
+    emps = frappe.db.get_list(
+        "Employee",
+        {
+            "relieving_date": ["=", tody],
+            "custom_is_exit":["=",False]
+        },
+        ignore_permissions=True,
+    )
+    for emp in emps:
+        employee = frappe.get_doc("Employee", emp)
+        employees.append(employee)
+    for emp in employees:
+        emp.custom_is_exit = True
+        emp.status = "Inactive"
+        emp.flags.ignore_permissions = True
+        emp.save()
+    frappe.db.commit()
+
+    # return emps
