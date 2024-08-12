@@ -136,7 +136,7 @@ app_license = "mit"
 scheduler_events = {
     # to run every 1 minute
     "cron": {
-        "*/1 * * * *": [
+        "0*/6 * * *": [
             "elfar.tasks.create_job_openning",
             "elfar.tasks.mark_employee_inactive",
         ]
