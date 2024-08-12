@@ -106,6 +106,9 @@ def create_job_openning():
                     "employment_type": i.employment_type,
                     "posted_on": now(),
                     "route": unique_route,
+                    "custom_reason":i.reason,
+                    "custom_reason_for_leaving":i.reason_for_leaving
+
                 }
             )
             job_opening.insert(ignore_permissions=True)
